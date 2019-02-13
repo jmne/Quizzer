@@ -37,6 +37,7 @@ public class DatabaseConnector{
       Class.forName("com.mysql.jdbc.Driver");
 
       //Verbindung herstellen
+      DriverManager.setLoginTimeout(5);
       connection = DriverManager.getConnection("jdbc:mysql://"+pIP+":"+pPort+"/"+pDatabase, pUsername, pPassword);
 
 
