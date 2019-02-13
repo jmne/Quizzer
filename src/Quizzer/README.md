@@ -18,6 +18,5 @@ Falls ihr noch Fragen habt schaut in unser [Wiki][wiki].
 
 ## Releases
 
-
 * 0.0.1
     * Work in progress
