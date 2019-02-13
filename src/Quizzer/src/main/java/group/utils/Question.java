@@ -1,4 +1,4 @@
-package de.group.utils;
+package group.utils;
 
 import java.util.ArrayList;
 

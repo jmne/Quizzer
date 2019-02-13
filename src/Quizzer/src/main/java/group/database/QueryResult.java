@@ -1,4 +1,4 @@
-package de.group.database;
+package group.database;
 
 /**
  * <p>

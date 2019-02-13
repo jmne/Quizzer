@@ -1,6 +1,4 @@
-package de.group.utils;
-
-import java.util.ArrayList;
+package group.utils;
 
 public class Main {
 

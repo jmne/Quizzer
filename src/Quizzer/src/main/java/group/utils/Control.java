@@ -1,7 +1,7 @@
-package de.group.utils;
+package group.utils;
 
-import de.group.database.DatabaseConnector;
-import de.group.database.QueryResult;
+import group.database.DatabaseConnector;
+import group.database.QueryResult;
 
 import javax.swing.*;
 import java.util.ArrayList;
