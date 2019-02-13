@@ -4,14 +4,7 @@ import java.util.ArrayList;
 
 public class Question {
 
-    private int id;
-    private String frage;
-    private String category;
-    private String a1;
-    private String a2;
-    private String a3;
-    private String a4;
-    private String richtigA;
+    private String id, frage, category, a1,a2,a3,a4,richtigA;
 
 
 
@@ -29,7 +22,7 @@ public class Question {
                 al.get(8) != null&&
                 al.get(9) != null){
 
-           // setId(al.get(0));
+            setId(al.get(0));
 
         }
 
@@ -38,7 +31,7 @@ public class Question {
 
     //Setter
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -73,7 +66,7 @@ public class Question {
 
     //Getter
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

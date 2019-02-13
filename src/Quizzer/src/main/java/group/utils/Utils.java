@@ -7,5 +7,9 @@ public class Utils {
 
     }
 
+    public static Question getQuestion(){
+        return new Question();
+    }
+
 
 }
