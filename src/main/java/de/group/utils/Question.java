@@ -17,13 +17,19 @@ public class Question {
 
     public Question(){
 
-        ArrayList<String> al = Main.control.getAnswersByID(Main.control.getRandomQuestionID());
+        ArrayList<String> al = Main.control.getQuestionByID(Main.control.getRandomQuestionID());
         if(al.get(0) != null &&
                 al.get(1) != null &&
                 al.get(2) != null &&
                 al.get(3) != null &&
                 al.get(4) != null &&
-                al.get(5) != null){
+                al.get(5) != null&&
+                al.get(6) != null&&
+                al.get(7) != null&&
+                al.get(8) != null&&
+                al.get(9) != null){
+
+           // setId(al.get(0));
 
         }
 
