@@ -87,7 +87,7 @@ public class Control{
         return 0;
     }
 
-    public ArrayList<String> getAnswersByID(int ID){
+    public ArrayList<String> getQuestionByID(int ID){
 
         connector.executeStatement("SELECT * FROM fragen WHERE FrageID=" + ID);
 
@@ -95,21 +95,39 @@ public class Control{
 
         ArrayList<String> ql = new ArrayList<>();
 
-        if(result.getData()[0][3] != null &&
+        if(result.getData()[0][0] != null &&
+                result.getData()[0][1] != null&&
+                result.getData()[0][2] != null &&
+                result.getData()[0][3] != null &&
                 result.getData()[0][4] != null &&
                 result.getData()[0][5] != null &&
-                result.getData()[0][6] != null&&
-                result.getData()[0][7] != null) {
+                result.getData()[0][6] != null &&
+                result.getData()[0][7] != null &&
+                result.getData()[0][8] != null &&
+                result.getData()[0][9] != null) {
 
+            ql.add(result.getData()[0][0]);
+            ql.add(result.getData()[0][1]);
+            ql.add(result.getData()[0][2]);
             ql.add(result.getData()[0][3]);
             ql.add(result.getData()[0][4]);
             ql.add(result.getData()[0][5]);
             ql.add(result.getData()[0][6]);
             ql.add(result.getData()[0][7]);
+            ql.add(result.getData()[0][8]);
+            ql.add(result.getData()[0][9]);
 
             return ql;
 
         }
+
+        return null;
+
+    }
+
+    public String getCategory(int ID){
+
+
 
         return null;
 

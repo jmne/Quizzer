@@ -9,16 +9,5 @@ public class Utils {
 
     }
 
-    public static ArrayList<String> getAnswersPacked(){
-
-        ArrayList<String> al = Main.control.getAnswersByID(Main.control.getRandomQuestionID());
-        if(al.get(3) != null){
-
-            return al;
-
-        }
-
-        return null;
-    }
 
 }
