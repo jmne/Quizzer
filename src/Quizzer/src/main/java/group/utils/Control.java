@@ -1,5 +1,6 @@
 package group.utils;
 
+import _private.sql;
 import group.database.DatabaseConnector;
 import group.database.QueryResult;
 
@@ -26,7 +27,7 @@ public class Control{
 
         //Verbindung zur Datenbank aufbauen.
 
-        connector = new DatabaseConnector("192.168.100.102",3306,"quizdatenbank03","user11","user11"); // port 3306
+        connector = new DatabaseConnector(sql.d,sql.p,sql.b,sql.u,sql.pw); // port 3306
         if (connector.getErrorMessage() != null){
             JOptionPane.showMessageDialog(null,"Verbindung zur Datenbank nicht möglich. \n"+connector.getErrorMessage(),"Fehlermeldung",JOptionPane.ERROR_MESSAGE,null);
             System.exit(0);
