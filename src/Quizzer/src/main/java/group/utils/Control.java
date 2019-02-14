@@ -93,7 +93,8 @@ public class Control {
 
     public ArrayList<String> getQuestionByID(int ID) {
 
-        connector.executeStatement("SELECT * FROM fragen WHERE FrageID=" + ID);
+        connector.executeStatement("SELECT FrageID, Frage, kategorie.Name Kategorie, A1, A2, A3, A4, KorrekteAntwort, Bearbeitet, Richtig " +
+                "FROM fragen f LEFT OUTER JOIN kategorie ON f.Kategorie = kategorie.KategorieID WHERE f.FrageID=" + ID);
 
         QueryResult result = connector.getCurrentQueryResult();
 
@@ -126,19 +127,6 @@ public class Control {
         }
 
         return null;
-
-    }
-
-    public String getCategory(int ID) {
-
-        connector.executeStatement("SELECT * FROM kategorie WHERE KategorieID=" + ID);
-
-        QueryResult result = connector.getCurrentQueryResult();
-
-        String c = result.getData()[0][0];
-
-        if (c != null) return c;
-        else return null;
 
     }
 

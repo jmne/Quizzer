@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         control = new Control();
 
-        Question q = Utils.getQuestion();
+        Question q = new Question();
         System.out.println("Zufällige Frage:");
         System.out.println("ID: " + q.getId());
         System.out.println("Kategorie: " + q.getCategory());

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package group.utils;
 
 public class Utils {
@@ -6,10 +10,5 @@ public class Utils {
 
 
     }
-
-    public static Question getQuestion() {
-        return new Question();
-    }
-
 
 }
