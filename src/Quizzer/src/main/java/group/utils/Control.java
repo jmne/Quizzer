@@ -84,7 +84,7 @@ public class Control {
 
         Integer r = Integer.parseInt(result.getData()[0][0]);
 
-        if (r != null)
+        if (r > -1)
 
 
             return r;
