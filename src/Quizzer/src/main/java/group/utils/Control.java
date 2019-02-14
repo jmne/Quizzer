@@ -7,7 +7,7 @@ import group.database.QueryResult;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class Control{
+public class Control {
     //Anbindung an die Datenbank
     private DatabaseConnector connector;
 
@@ -17,7 +17,7 @@ public class Control{
     //Statistikdaten
     private int korrekteBearbeitungenGesamt, bearbeitungenGesamt;
 
-    public Control(){
+    public Control() {
 
         //Aktuellen Nutzer initialisieren.
         aktuelleSpielerID = null;
@@ -27,53 +27,53 @@ public class Control{
 
         //Verbindung zur Datenbank aufbauen.
 
-        connector = new DatabaseConnector(sql.d,sql.p,sql.b,sql.u,sql.pw); // port 3306
-        if (connector.getErrorMessage() != null){
-            JOptionPane.showMessageDialog(null,"Verbindung zur Datenbank nicht möglich. \n"+connector.getErrorMessage(),"Fehlermeldung",JOptionPane.ERROR_MESSAGE,null);
+        connector = new DatabaseConnector(sql.d, sql.p, sql.b, sql.u, sql.pw);
+        if (connector.getErrorMessage() != null) {
+            JOptionPane.showMessageDialog(null, "Verbindung zur Datenbank nicht möglich. \n" + connector.getErrorMessage(), "Fehlermeldung", JOptionPane.ERROR_MESSAGE, null);
             System.exit(0);
         }
 
     }
 
-    public void anmelden(String pBenutzer, String pPasswort){
+    public void anmelden(String pBenutzer, String pPasswort) {
         //ID fuer den Benutzer ermitteln.
         connector.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pBenutzer + "' AND Passwort = '" + pPasswort + "'");
         QueryResult result = connector.getCurrentQueryResult();
 
         //Ueberpruefen, ob Anmeldung erfolgreich war.
-            if (result.getRowCount() == 1) {
-                aktuelleSpielerID = result.getData()[0][0];
+        if (result.getRowCount() == 1) {
+            aktuelleSpielerID = result.getData()[0][0];
 
-     //SQL-Anweisung: Statistische Daten aus der DB laden.
-      String anweisung =
-        "SELECT SUM(hatBearbeitet.anzahlBearbeitungen), SUM(hatBearbeitet.anzahlKorrekteBearbeitungen) " +
-        "FROM hatBearbeitet "+
-        "WHERE hatBearbeitet.SpielerID = " + aktuelleSpielerID;
-      connector.executeStatement(anweisung);
-      result = connector.getCurrentQueryResult();
+            //SQL-Anweisung: Statistische Daten aus der DB laden.
+            String anweisung =
+                    "SELECT SUM(hatBearbeitet.anzahlBearbeitungen), SUM(hatBearbeitet.anzahlKorrekteBearbeitungen) " +
+                            "FROM hatBearbeitet " +
+                            "WHERE hatBearbeitet.SpielerID = " + aktuelleSpielerID;
+            connector.executeStatement(anweisung);
+            result = connector.getCurrentQueryResult();
 
-       if (result.getData()[0][0] != null){
-               bearbeitungenGesamt = Integer.parseInt(result.getData()[0][0]);
-               korrekteBearbeitungenGesamt = Integer.parseInt(result.getData()[0][1]);
-    }
+            if (result.getData()[0][0] != null) {
+                bearbeitungenGesamt = Integer.parseInt(result.getData()[0][0]);
+                korrekteBearbeitungenGesamt = Integer.parseInt(result.getData()[0][1]);
+            }
 
         }
     }
 
-    public boolean istAngemeldet(){
+    public boolean istAngemeldet() {
         return aktuelleSpielerID != null;
     }
 
 
-    public int gibRichtigeBearbeitungenGesamt(){
+    public int gibRichtigeBearbeitungenGesamt() {
         return korrekteBearbeitungenGesamt;
     }
 
-    public int gibBearbeitungenGesamt(){
+    public int gibBearbeitungenGesamt() {
         return bearbeitungenGesamt;
     }
 
-    public int getRandomQuestionID(){
+    public int getRandomQuestionID() {
 
         connector.executeStatement("SELECT * FROM fragen ORDER BY Rand() Limit 1");
 
@@ -81,14 +81,14 @@ public class Control{
 
         Integer r = Integer.parseInt(result.getData()[0][0]);
 
-        if(r != null)
+        if (r != null)
 
 
             return r;
         return 0;
     }
 
-    public ArrayList<String> getQuestionByID(int ID){
+    public ArrayList<String> getQuestionByID(int ID) {
 
         connector.executeStatement("SELECT * FROM fragen WHERE FrageID=" + ID);
 
@@ -96,8 +96,8 @@ public class Control{
 
         ArrayList<String> ql = new ArrayList<>();
 
-        if(result.getData()[0][0] != null &&
-                result.getData()[0][1] != null&&
+        if (result.getData()[0][0] != null &&
+                result.getData()[0][1] != null &&
                 result.getData()[0][2] != null &&
                 result.getData()[0][3] != null &&
                 result.getData()[0][4] != null &&
@@ -126,11 +126,16 @@ public class Control{
 
     }
 
-    public String getCategory(int ID){
+    public String getCategory(int ID) {
 
+        connector.executeStatement("SELECT * FROM kategorie WHERE KategorieID=" + ID);
 
+        QueryResult result = connector.getCurrentQueryResult();
 
-        return null;
+        String c = result.getData()[0][0];
+
+        if (c != null) return c;
+        else return null;
 
     }
 
