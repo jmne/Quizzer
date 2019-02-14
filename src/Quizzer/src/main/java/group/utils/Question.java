@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package group.utils;
 
 import java.util.ArrayList;
@@ -37,7 +41,7 @@ class Question {
 
     //Setter
 
-    private String getId() {
+    String getId() {
         return id;
     }
 
@@ -45,7 +49,7 @@ class Question {
         this.id = id;
     }
 
-    private String getA1() {
+    String getA1() {
         return a1;
     }
 
@@ -53,7 +57,7 @@ class Question {
         this.a1 = a1;
     }
 
-    private String getA2() {
+    String getA2() {
         return a2;
     }
 
@@ -61,7 +65,7 @@ class Question {
         this.a2 = a2;
     }
 
-    private String getA3() {
+    String getA3() {
         return a3;
     }
 
@@ -71,7 +75,7 @@ class Question {
 
     //Getter
 
-    private String getA4() {
+    String getA4() {
         return a4;
     }
 
@@ -79,7 +83,7 @@ class Question {
         this.a4 = a4;
     }
 
-    private String getFrage() {
+    String getFrage() {
         return frage;
     }
 
@@ -87,7 +91,7 @@ class Question {
         this.frage = frage;
     }
 
-    private String getRichtigA() {
+    String getRichtigA() {
         return richtigA;
     }
 
@@ -95,7 +99,7 @@ class Question {
         this.richtigA = richtigA;
     }
 
-    private String getCategory() {
+    String getCategory() {
         return category;
     }
 

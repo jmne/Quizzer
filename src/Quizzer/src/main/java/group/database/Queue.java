@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package group.database;
 
 /**
@@ -25,6 +29,7 @@ public class Queue<ContentType> {
 
     /* ----------- Ende der privaten inneren Klasse -------------- */
     private QueueNode tail;
+
     /**
      * Eine leere Schlange wird erzeugt.
      * Objekte, die in dieser Schlange verwaltet werden, muessen vom Typ
