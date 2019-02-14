@@ -20,3 +20,8 @@ Falls ihr noch Fragen habt schaut in unser [Wiki][wiki].
 
 * 0.0.1
     * Work in progress
+    
+* 0.1.0
+    * Class structure/first features
+    * SQl Connection
+    * Project Site [Here](https://github.com/jancodet/Quizzer/projects/1)
