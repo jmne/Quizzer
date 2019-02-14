@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package group.database;
 
 import java.sql.Connection;
@@ -37,15 +41,16 @@ public class DatabaseConnector {
     public DatabaseConnector(String pIP, int pPort, String pDatabase, String pUsername, String pPassword) {
         try {
             //Laden der Treiberklasse
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
 
             //Verbindung herstellen
             DriverManager.setLoginTimeout(5);
-            connection = DriverManager.getConnection("jdbc:mysql://" + pIP + ":" + pPort + "/" + pDatabase, pUsername, pPassword);
+            connection = DriverManager.getConnection("jdbc:mariadb://" + pIP + ":" + pPort + "/" + pDatabase, pUsername, pPassword);
 
 
         } catch (Exception e) {
             message = e.getMessage();
+            e.printStackTrace();
         }
     }
 

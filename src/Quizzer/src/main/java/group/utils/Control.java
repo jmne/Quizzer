@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package group.utils;
 
 import _private.sql;
@@ -24,14 +28,13 @@ public class Control {
         korrekteBearbeitungenGesamt = 0;
         bearbeitungenGesamt = 0;
 
-
         //Verbindung zur Datenbank aufbauen.
-
         connector = new DatabaseConnector(sql.d, sql.p, sql.b, sql.u, sql.pw);
         if (connector.getErrorMessage() != null) {
             JOptionPane.showMessageDialog(null, "Verbindung zur Datenbank nicht möglich. \n" + connector.getErrorMessage(), "Fehlermeldung", JOptionPane.ERROR_MESSAGE, null);
             System.exit(0);
         }
+
 
     }
 
