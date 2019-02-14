@@ -2,13 +2,13 @@ package group.utils;
 
 import java.util.ArrayList;
 
-public class Question {
+class Question {
 
     private String id, frage, category, a1,a2,a3,a4,richtigA;
 
 
 
-    public Question(){
+    Question(){
 
         ArrayList<String> al = Main.control.getQuestionByID(Main.control.getRandomQuestionID());
         if(al.get(0) != null &&
@@ -23,6 +23,13 @@ public class Question {
                 al.get(9) != null){
 
             setId(al.get(0));
+            setFrage(al.get(1));
+            setCategory(al.get(2));
+            setA1(al.get(3));
+            setA2(al.get(4));
+            setA3(al.get(5));
+            setA4(al.get(6));
+            setRichtigA(al.get(7));
 
         }
 
@@ -31,70 +38,70 @@ public class Question {
 
     //Setter
 
-    public void setId(String id) {
+    private void setId(String id) {
         this.id = id;
     }
 
 
-    public void setA1(String a1) {
+    private void setA1(String a1) {
         this.a1 = a1;
     }
 
-    public void setA2(String a2) {
+    private void setA2(String a2) {
         this.a2 = a2;
     }
 
-    public void setA3(String a3) {
+    private void setA3(String a3) {
         this.a3 = a3;
     }
 
-    public void setA4(String a4) {
+    private void setA4(String a4) {
         this.a4 = a4;
     }
 
-    public void setFrage(String frage) {
+    private void setFrage(String frage) {
         this.frage = frage;
     }
 
-    public void setCategory(String category) {
+    private void setCategory(String category) {
         this.category = category;
     }
 
-    public void setRichtigA(String richtigA) {
+    private void setRichtigA(String richtigA) {
         this.richtigA = richtigA;
     }
 
     //Getter
 
-    public String getId() {
+    private String getId() {
         return id;
     }
 
-    public String getA1() {
+    private String getA1() {
         return a1;
     }
 
-    public String getA2() {
+    private String getA2() {
         return a2;
     }
 
-    public String getA3() {
+    private String getA3() {
         return a3;
     }
 
-    public String getA4() {
+    private String getA4() {
         return a4;
     }
 
-    public String getFrage() {
+    private String getFrage() {
         return frage;
     }
 
-    public String getRichtigA() {
+    private String getRichtigA() {
         return richtigA;
     }
 
-    public String getCategory() {
+    private String getCategory() {
         return category;
     }
 
