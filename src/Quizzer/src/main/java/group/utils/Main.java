@@ -26,7 +26,7 @@ public class Main {
         try {
             TimeUnit.SECONDS.sleep(7);
 
-            System.out.println("Richtige Antwort: " + q.getRichtigA());
+            System.out.println("Richtige Antwort ist: " + q.getRichtigA());
 
         } catch (InterruptedException e) {
             e.printStackTrace();
