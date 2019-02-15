@@ -58,6 +58,11 @@ public class Benutzer {
         if (result.getRowCount() == 1)
         {
             benutzerID = result.getData()[0][0];
+            pConnect.executeStatement("SELECT Email FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+            result = pConnect.getCurrentQueryResult();
+            email = result.getData()[0][0];
+            username = pUsername;
+            passwort = pPasswort;
             return true;
         }
         else
@@ -67,6 +72,11 @@ public class Benutzer {
             if (result.getRowCount() == 1)
             {
                 benutzerID = result.getData()[0][0];
+                pConnect.executeStatement("SELECT Username FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+                result = pConnect.getCurrentQueryResult();
+                username = result.getData()[0][0];
+                email = pUsername;
+                passwort = pPasswort;
                 return true;
             }
         }
@@ -74,11 +84,17 @@ public class Benutzer {
         return false;
     }
 
-    public boolean createBenutzer(String pUsername, String pEmail, String pPassswort, DatabaseConnector pConnect)
+    public boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect)
     {
-        pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('"+ pUsername +"', '"+ pEmail +"', '"+ pPassswort +"')");
+        pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('"+ pUsername +"', '"+ pEmail +"', '"+ pPasswort +"')");
         if (pConnect.getErrorMessage()==null)
         {
+            pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+            QueryResult result = pConnect.getCurrentQueryResult();
+            benutzerID = result.getData()[0][0];
+            username = pUsername;
+            email = pEmail;
+            passwort = pPasswort;
             return true;
         }
 
