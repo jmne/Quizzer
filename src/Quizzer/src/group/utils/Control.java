@@ -2,11 +2,11 @@
  * Copyright (c) 2019 | Jan M. (@jncdt)
  */
 
-package group.utils;
+package src.group.utils;
 
 import _private.sql;
-import group.database.DatabaseConnector;
-import group.database.QueryResult;
+import src.group.database.DatabaseConnector;
+import src.group.database.QueryResult;
 
 import javax.swing.*;
 import java.util.ArrayList;

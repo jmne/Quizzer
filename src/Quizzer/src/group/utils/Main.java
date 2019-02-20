@@ -2,7 +2,7 @@
  * Copyright (c) 2019 | Jan M. (@jncdt)
  */
 
-package group.utils;
+package src.group.utils;
 
 import java.util.concurrent.TimeUnit;
 

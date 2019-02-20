@@ -1,62 +1,52 @@
-package group.utils;
+package src.group.utils;
 
-import group.database.DatabaseConnector;
-import group.database.QueryResult;
+import src.group.database.DatabaseConnector;
+import src.group.database.QueryResult;
 
 public class Benutzer {
 
     private String username, email, passwort, benutzerID;
-    public Benutzer()
-    {
+
+    public Benutzer() {
 
     }
 
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public String getPasswort()
-    {
-        return passwort;
-    }
-
-    public String getBenutzerID()
-    {
-        return benutzerID;
-    }
-
-    public void setUsername(String temp)
-    {
+    public void setUsername(String temp) {
         username = temp;
     }
 
-    public void setEmail(String temp)
-    {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String temp) {
         email = temp;
     }
 
-    public void setPasswort(String temp)
-    {
+    public String getPasswort() {
+        return passwort;
+    }
+
+    public void setPasswort(String temp) {
         passwort = temp;
     }
 
-    public void setBenutzerID(String temp)
-    {
+    public String getBenutzerID() {
+        return benutzerID;
+    }
+
+    public void setBenutzerID(String temp) {
         benutzerID = temp;
     }
 
-    public boolean loginBenutzer(String pUsername, String pPasswort, DatabaseConnector pConnect)
-    {
+    public boolean loginBenutzer(String pUsername, String pPasswort, DatabaseConnector pConnect) {
         pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
         QueryResult result = pConnect.getCurrentQueryResult();
-        if (result.getRowCount() == 1)
-        {
+        if (result.getRowCount() == 1) {
             benutzerID = result.getData()[0][0];
             pConnect.executeStatement("SELECT Email FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
             result = pConnect.getCurrentQueryResult();
@@ -64,13 +54,10 @@ public class Benutzer {
             username = pUsername;
             passwort = pPasswort;
             return true;
-        }
-        else
-        {
+        } else {
             pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
             result = pConnect.getCurrentQueryResult();
-            if (result.getRowCount() == 1)
-            {
+            if (result.getRowCount() == 1) {
                 benutzerID = result.getData()[0][0];
                 pConnect.executeStatement("SELECT Username FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
                 result = pConnect.getCurrentQueryResult();
@@ -84,11 +71,9 @@ public class Benutzer {
         return false;
     }
 
-    public boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect)
-    {
-        pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('"+ pUsername +"', '"+ pEmail +"', '"+ pPasswort +"')");
-        if (pConnect.getErrorMessage()==null)
-        {
+    public boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect) {
+        pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('" + pUsername + "', '" + pEmail + "', '" + pPasswort + "')");
+        if (pConnect.getErrorMessage() == null) {
             pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
             QueryResult result = pConnect.getCurrentQueryResult();
             benutzerID = result.getData()[0][0];

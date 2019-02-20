@@ -1,19 +1,10 @@
-package group.utils;
+package src.group.utils;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.CardLayout;
-import javax.swing.JProgressBar;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
 
 public class Gui extends JFrame {
 
@@ -24,22 +15,6 @@ public class Gui extends JFrame {
     private JRadioButton rdbtnAntwort4;
     private JLabel lblFrage;
     private CardLayout cl;
-
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Gui frame = new Gui();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     /**
      * Create the frame.
@@ -119,8 +94,7 @@ public class Gui extends JFrame {
         rdbtnAntwort1.setHorizontalAlignment(SwingConstants.CENTER);
         rdbtnAntwort1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(rdbtnAntwort1.isSelected())
-                {
+                if (rdbtnAntwort1.isSelected()) {
                     rdbtnAntwort2.setSelected(false);
                     rdbtnAntwort3.setSelected(false);
                     rdbtnAntwort4.setSelected(false);
@@ -134,8 +108,7 @@ public class Gui extends JFrame {
         rdbtnAntwort2.setHorizontalAlignment(SwingConstants.CENTER);
         rdbtnAntwort2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(rdbtnAntwort2.isSelected())
-                {
+                if (rdbtnAntwort2.isSelected()) {
                     rdbtnAntwort1.setSelected(false);
                     rdbtnAntwort3.setSelected(false);
                     rdbtnAntwort4.setSelected(false);
@@ -149,8 +122,7 @@ public class Gui extends JFrame {
         rdbtnAntwort3.setHorizontalAlignment(SwingConstants.CENTER);
         rdbtnAntwort3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(rdbtnAntwort3.isSelected())
-                {
+                if (rdbtnAntwort3.isSelected()) {
                     rdbtnAntwort2.setSelected(false);
                     rdbtnAntwort1.setSelected(false);
                     rdbtnAntwort4.setSelected(false);
@@ -164,8 +136,7 @@ public class Gui extends JFrame {
         rdbtnAntwort4.setHorizontalAlignment(SwingConstants.CENTER);
         rdbtnAntwort4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(rdbtnAntwort4.isSelected())
-                {
+                if (rdbtnAntwort4.isSelected()) {
                     rdbtnAntwort2.setSelected(false);
                     rdbtnAntwort3.setSelected(false);
                     rdbtnAntwort1.setSelected(false);
@@ -209,5 +180,21 @@ public class Gui extends JFrame {
 
         JPanel settings = new JPanel();
         contentPane.add(settings, "name_5202597872108");
+    }
+
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Gui frame = new Gui();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
