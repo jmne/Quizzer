@@ -1,6 +1,5 @@
 package group.utils;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -14,6 +13,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class Gui extends JFrame {
 
@@ -58,14 +58,14 @@ public class Gui extends JFrame {
         contentPane.add(home, "Home");
         home.setLayout(null);
 
-        JButton btnNewButton_2 = new JButton("Spielen");
-        btnNewButton_2.addActionListener(new ActionListener() {
+        JButton btnPlay = new JButton("Spielen");
+        btnPlay.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cl.next(contentPane);
+                cl.show(contentPane, "Quizselect");
             }
         });
-        btnNewButton_2.setBounds(158, 109, 121, 38);
-        home.add(btnNewButton_2);
+        btnPlay.setBounds(158, 109, 121, 38);
+        home.add(btnPlay);
 
         JButton btnNewButton_3 = new JButton("Statistik");
         btnNewButton_3.addActionListener(new ActionListener() {
@@ -77,43 +77,55 @@ public class Gui extends JFrame {
         home.add(btnNewButton_3);
 
         JButton btnNewButton_4 = new JButton("Einstellungen");
+        btnNewButton_4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                cl.show(contentPane, "Settings");
+            }
+        });
         btnNewButton_4.setBounds(158, 207, 121, 38);
         home.add(btnNewButton_4);
 
-        JLabel lblDasBesteGui = new JLabel("Das beste Gui EUW");
-        lblDasBesteGui.setHorizontalAlignment(SwingConstants.CENTER);
-        lblDasBesteGui.setBounds(119, 48, 196, 14);
-        home.add(lblDasBesteGui);
+        JLabel lblDasBesteQuiz = new JLabel("Das beste Quiz EUW");
+        lblDasBesteQuiz.setHorizontalAlignment(SwingConstants.CENTER);
+        lblDasBesteQuiz.setBounds(119, 48, 196, 14);
+        home.add(lblDasBesteQuiz);
 
-        JPanel Guiselect = new JPanel();
-        contentPane.add(Guiselect, "name_1495728047919");
-        Guiselect.setLayout(null);
+        JPanel quizselect = new JPanel();
+        contentPane.add(quizselect, "Quizselect");
+        quizselect.setLayout(null);
 
-        JButton btnNewButton_5 = new JButton("Normales Gui");
+        JButton btnNewButton_5 = new JButton("Normales Quiz");
         btnNewButton_5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cl.next(contentPane);
+                cl.show(contentPane, "NormalQuiz");
             }
         });
-        btnNewButton_5.setBounds(148, 108, 124, 40);
-        Guiselect.add(btnNewButton_5);
+        btnNewButton_5.setBounds(158, 109, 121, 38);
+        quizselect.add(btnNewButton_5);
 
-        JButton btnNewButton_6 = new JButton("Intelligentes Gui");
-        btnNewButton_6.setBounds(148, 175, 124, 40);
-        Guiselect.add(btnNewButton_6);
+        JButton btnNewButton_6 = new JButton("Intelligentes Quiz");
+        btnNewButton_6.setHorizontalAlignment(SwingConstants.TRAILING);
+        btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 11));
+        btnNewButton_6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cl.show(contentPane, "IntQuiz");
+            }
+        });
+        btnNewButton_6.setBounds(158, 158, 121, 38);
+        quizselect.add(btnNewButton_6);
 
-        JPanel Gui = new JPanel();
-        contentPane.add(Gui, "name_643954445339");
-        Gui.setLayout(null);
+        JPanel quiz = new JPanel();
+        contentPane.add(quiz, "NormalQuiz");
+        quiz.setLayout(null);
 
         JProgressBar progressBar = new JProgressBar();
         progressBar.setMaximum(10);
         progressBar.setBounds(10, 299, 414, 36);
-        Gui.add(progressBar);
+        quiz.add(progressBar);
 
         JButton btnBestätigen = new JButton("Best\u00E4tigen");
         btnBestätigen.setBounds(154, 248, 112, 36);
-        Gui.add(btnBestätigen);
+        quiz.add(btnBestätigen);
 
         rdbtnAntwort1 = new JRadioButton("New radio button");
         rdbtnAntwort1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -128,7 +140,7 @@ public class Gui extends JFrame {
             }
         });
         rdbtnAntwort1.setBounds(10, 96, 414, 23);
-        Gui.add(rdbtnAntwort1);
+        quiz.add(rdbtnAntwort1);
 
         rdbtnAntwort2 = new JRadioButton("New radio button");
         rdbtnAntwort2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -143,7 +155,7 @@ public class Gui extends JFrame {
             }
         });
         rdbtnAntwort2.setBounds(10, 122, 414, 23);
-        Gui.add(rdbtnAntwort2);
+        quiz.add(rdbtnAntwort2);
 
         rdbtnAntwort3 = new JRadioButton("New radio button");
         rdbtnAntwort3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -158,7 +170,7 @@ public class Gui extends JFrame {
             }
         });
         rdbtnAntwort3.setBounds(10, 148, 414, 23);
-        Gui.add(rdbtnAntwort3);
+        quiz.add(rdbtnAntwort3);
 
         rdbtnAntwort4 = new JRadioButton("New radio button");
         rdbtnAntwort4.setHorizontalAlignment(SwingConstants.CENTER);
@@ -173,11 +185,12 @@ public class Gui extends JFrame {
             }
         });
         rdbtnAntwort4.setBounds(10, 174, 414, 23);
-        Gui.add(rdbtnAntwort4);
+        quiz.add(rdbtnAntwort4);
 
         JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setBounds(188, 215, 46, 14);
-        Gui.add(lblNewLabel);
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setBounds(10, 215, 414, 14);
+        quiz.add(lblNewLabel);
 
         JButton btnBackHome = new JButton("Hauptmen\u00FC");
         btnBackHome.addActionListener(new ActionListener() {
@@ -186,12 +199,16 @@ public class Gui extends JFrame {
             }
         });
         btnBackHome.setBounds(10, 11, 122, 29);
-        Gui.add(btnBackHome);
+        quiz.add(btnBackHome);
 
         lblFrage = new JLabel("New label");
         lblFrage.setHorizontalAlignment(SwingConstants.CENTER);
         lblFrage.setBounds(10, 55, 414, 34);
-        Gui.add(lblFrage);
+        quiz.add(lblFrage);
+
+        JPanel intQuiz = new JPanel();
+        contentPane.add(intQuiz, "IntQuiz");
+        intQuiz.setLayout(null);
 
         JPanel statistik = new JPanel();
         contentPane.add(statistik, "Statistik");
@@ -208,6 +225,34 @@ public class Gui extends JFrame {
         statistik.add(btnBackHome2);
 
         JPanel settings = new JPanel();
-        contentPane.add(settings, "name_5202597872108");
+        contentPane.add(settings, "Settings");
+        settings.setLayout(null);
+
+        JButton btnBackHome3 = new JButton("Hauptmen\u00FC");
+        btnBackHome3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                cl.show(contentPane, "Home");
+            }
+        });
+        btnBackHome3.setBounds(10, 11, 122, 29);
+        settings.add(btnBackHome3);
+
+        JButton btnBackHome4 = new JButton("Hauptmen\u00FC");
+        btnBackHome4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                cl.show(contentPane, "Home");
+            }
+        });
+        btnBackHome4.setBounds(10, 11, 122, 29);
+        quizselect.add(btnBackHome4);
+
+        JButton btnBackHome5 = new JButton("Hauptmen\u00FC");
+        btnBackHome5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                cl.show(contentPane, "Home");
+            }
+        });
+        btnBackHome5.setBounds(10, 11, 122, 29);
+        intQuiz.add(btnBackHome5);
     }
 }
