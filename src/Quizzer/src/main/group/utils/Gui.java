@@ -1,4 +1,4 @@
-package src.group.utils;
+package src.main.group.utils;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

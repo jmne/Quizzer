@@ -2,7 +2,7 @@
  * Copyright (c) 2019 | Jan M. (@jncdt)
  */
 
-package src.group.utils;
+package src.main.group.utils;
 
 import java.util.ArrayList;
 

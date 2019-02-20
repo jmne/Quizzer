@@ -2,7 +2,7 @@
  * Copyright (c) 2019 | Jan M. (@jncdt)
  */
 
-package src.group.database;
+package src.main.group.database;
 
 /**
  * <p>
