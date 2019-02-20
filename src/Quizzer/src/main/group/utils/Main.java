@@ -4,6 +4,8 @@
 
 package src.main.group.utils;
 
+import src.main.group.handlers.GameState;
+
 import java.util.concurrent.TimeUnit;
 
 public class Main {
@@ -11,6 +13,9 @@ public class Main {
     public static Control control;
 
     public static void main(String[] args) {
+
+        GameState.setState(GameState.MENU);
+
         control = new Control();
 
         Question q = new Question();
