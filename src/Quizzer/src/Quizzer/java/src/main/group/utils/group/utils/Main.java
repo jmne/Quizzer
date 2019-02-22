@@ -2,9 +2,9 @@
  * Copyright (c) 2019 | Jan M. (@jncdt)
  */
 
-package src.main.group.utils;
+package src.main.group.utils.group.utils;
 
-import src.main.group.handlers.GameState;
+import src.main.group.utils.group.handlers.GameState;
 
 import java.util.concurrent.TimeUnit;
 
