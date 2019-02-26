@@ -1,4 +1,4 @@
-package _private;
+package src.main._private;
 
 public class sql {
 

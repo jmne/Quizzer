@@ -1,4 +1,4 @@
-package src.main.group.utils.group.utils;
+package src.main.group.utils;
 
 public class Game {
 
