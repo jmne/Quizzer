@@ -1,4 +1,4 @@
-package src.main.group.utils.group.handlers;
+package src.main.group.handlers;
 
 public enum GameState {
     MENU, SETTINGS, INGAME, END, STATISTIC;

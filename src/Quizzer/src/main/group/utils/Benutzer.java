@@ -1,7 +1,7 @@
-package src.main.group.utils.group.utils;
+package src.main.group.utils;
 
-import src.main.group.utils.group.database.DatabaseConnector;
-import src.main.group.utils.group.database.QueryResult;
+import src.main.group.database.DatabaseConnector;
+import src.main.group.database.QueryResult;
 
 public class Benutzer {
 

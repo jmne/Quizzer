@@ -2,7 +2,7 @@
  * Copyright (c) 2019 | Jan M. (@jncdt)
  */
 
-package src.main.group.utils.group.database;
+package src.main.group.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
