@@ -7,44 +7,87 @@ import src.main.group.database.QueryResult;
  * Dies ist die Verwaltung der Benutzer für das Quizspiel von Gruppe 2.
  *
  * @author Kevin Baier
- * @version 1.0
+ * @version 1.1
  */
 public class Benutzer {
 
     private String username, email, passwort, benutzerID;
 
+    /**
+     * Konstruktor der Klasse Benutzer.
+     */
     public Benutzer() {
 
     }
 
+    /**
+     * Getter für den String username.
+     *
+     * @return String username.
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Setter für den String username.
+     *
+     * @param String temp auf den im Verlauf der Methode der String username gesetzt wird.
+     */
     public void setUsername(String temp) {
         username = temp;
     }
 
+    /**
+     * Getter für den String email.
+     *
+     * @return String email.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Setter für den String email.
+     *
+     * @param String temp auf den im Verlauf der Methode der String email gesetzt wird.
+     */
     public void setEmail(String temp) {
         email = temp;
     }
 
+    /**
+     * Getter für den String passwort.
+     *
+     * @return String passwort.
+     */
     public String getPasswort() {
         return passwort;
     }
 
+    /**
+     * Setter für den String passwort.
+     *
+     * @param String temp auf den im Verlauf der Methode der String passwort gesetzt wird.
+     */
     public void setPasswort(String temp) {
         passwort = temp;
     }
 
+    /**
+     * Getter für den String benutzerID.
+     *
+     * @return String benutzerID.
+     */
     public String getBenutzerID() {
         return benutzerID;
     }
 
+    /**
+     * Setter für den String benutzerID.
+     *
+     * @param String temp auf den im Verlauf der Methode der String benutzerID gesetzt wird.
+     */
     public void setBenutzerID(String temp) {
         benutzerID = temp;
     }
