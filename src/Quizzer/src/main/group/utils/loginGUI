@@ -20,6 +20,10 @@ public class login extends JFrame {
     private JTextField textField;
     private JPasswordField passwordField;
     private CardLayout cl;
+    private JTextField textField_1;
+    private JTextField textField_2;
+    private JPasswordField passwordField_1;
+    private JPasswordField passwordField_2;
 
     /**
      * Launch the application.
@@ -61,23 +65,27 @@ public class login extends JFrame {
         einloggen.add(lblNewLabel);
 
         JLabel lblNewLabel_1 = new JLabel("Benutzername:");
-        lblNewLabel_1.setBounds(30, 132, 99, 14);
+        lblNewLabel_1.setBounds(10, 132, 109, 14);
         einloggen.add(lblNewLabel_1);
 
         JLabel lblNewLabel_2 = new JLabel("Passwort:");
-        lblNewLabel_2.setBounds(31, 194, 70, 14);
+        lblNewLabel_2.setBounds(10, 163, 109, 14);
         einloggen.add(lblNewLabel_2);
 
         textField = new JTextField();
-        textField.setBounds(139, 129, 231, 20);
+        textField.setBounds(129, 129, 295, 20);
         einloggen.add(textField);
         textField.setColumns(10);
 
         passwordField = new JPasswordField();
-        passwordField.setBounds(139, 191, 231, 20);
+        passwordField.setBounds(129, 160, 295, 20);
         einloggen.add(passwordField);
 
         JButton btnNewButton = new JButton("Einloggen");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+            }
+        });
         btnNewButton.setBounds(139, 263, 146, 33);
         einloggen.add(btnNewButton);
 
@@ -108,5 +116,47 @@ public class login extends JFrame {
         });
         btnEinloggen.setBounds(10, 11, 122, 29);
         registrieren.add(btnEinloggen);
+
+        textField_1 = new JTextField();
+        textField_1.setBounds(129, 129, 295, 20);
+        registrieren.add(textField_1);
+        textField_1.setColumns(10);
+
+        textField_2 = new JTextField();
+        textField_2.setBounds(129, 160, 295, 20);
+        registrieren.add(textField_2);
+        textField_2.setColumns(10);
+
+        passwordField_1 = new JPasswordField();
+        passwordField_1.setBounds(129, 191, 295, 20);
+        registrieren.add(passwordField_1);
+
+        passwordField_2 = new JPasswordField();
+        passwordField_2.setBounds(129, 222, 295, 20);
+        registrieren.add(passwordField_2);
+
+        JButton btnRegistrieren = new JButton("Registrieren");
+        btnRegistrieren.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+        btnRegistrieren.setBounds(139, 263, 146, 33);;
+        registrieren.add(btnRegistrieren);
+
+        JLabel lblNewLabel_3 = new JLabel("Benutzername:");
+        lblNewLabel_3.setBounds(10, 132, 109, 14);
+        registrieren.add(lblNewLabel_3);
+
+        JLabel lblNewLabel_4 = new JLabel("E-Mail:");
+        lblNewLabel_4.setBounds(10, 163, 109, 14);
+        registrieren.add(lblNewLabel_4);
+
+        JLabel lblNewLabel_5 = new JLabel("Passwort:");
+        lblNewLabel_5.setBounds(10, 194, 109, 14);
+        registrieren.add(lblNewLabel_5);
+
+        JLabel lblNewLabel_6 = new JLabel("Passwort wiederholen:");
+        lblNewLabel_6.setBounds(10, 225, 109, 14);
+        registrieren.add(lblNewLabel_6);
     }
 }
