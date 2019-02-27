@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Control {
     //Anbindung an die Datenbank
-    private DatabaseConnector connector;
+    public DatabaseConnector connector;
 
     //ID-Nummer des aktuellen Spielers
     private String aktuelleSpielerID;

@@ -76,6 +76,17 @@ public class login extends JFrame {
         JButton btnNewButton = new JButton("Einloggen");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                String user = textField.getText();
+                String pass = String.valueOf(passwordField.getPassword());
+                if (pass.length() > 0 && user.length() > 0) {
+                    if (Main.user.loginBenutzer(user, pass, Main.control.connector)) {
+                        btnNewButton.setText("Eingeloggt");
+                    } else {
+                        btnNewButton.setText("Falsche Daten");
+                    }
+                } else {
+                    btnNewButton.setText("Bitte Daten angeben");
+                }
             }
         });
         btnNewButton.setBounds(139, 263, 146, 33);
