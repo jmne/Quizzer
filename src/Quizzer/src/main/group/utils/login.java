@@ -1,18 +1,10 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+package src.main.group.utils;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
-import java.awt.CardLayout;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class login extends JFrame {
 
@@ -140,7 +132,7 @@ public class login extends JFrame {
             public void actionPerformed(ActionEvent e) {
             }
         });
-        btnRegistrieren.setBounds(139, 263, 146, 33);;
+        btnRegistrieren.setBounds(139, 263, 146, 33);
         registrieren.add(btnRegistrieren);
 
         JLabel lblNewLabel_3 = new JLabel("Benutzername:");
