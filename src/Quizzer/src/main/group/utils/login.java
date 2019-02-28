@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package src.main.group.utils;
 
 import javax.swing.*;
@@ -5,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 
 public class login extends JFrame {
 
@@ -79,10 +84,14 @@ public class login extends JFrame {
                 String user = textField.getText();
                 String pass = String.valueOf(passwordField.getPassword());
                 if (pass.length() > 0 && user.length() > 0) {
-                    if (Main.user.loginBenutzer(user, pass, Main.control.connector)) {
-                        btnNewButton.setText("Eingeloggt");
-                    } else {
-                        btnNewButton.setText("Falsche Daten");
+                    try {
+                        if (Main.user.loginBenutzer(user, pass, Main.control.connector)) {
+                            btnNewButton.setText("Eingeloggt");
+                        } else {
+                            btnNewButton.setText("Falsche Daten");
+                        }
+                    } catch (NoSuchAlgorithmException e) {
+                        e.printStackTrace();
                     }
                 } else {
                     btnNewButton.setText("Bitte Daten angeben");
