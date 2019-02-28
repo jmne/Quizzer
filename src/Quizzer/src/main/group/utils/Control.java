@@ -7,8 +7,10 @@ package src.main.group.utils;
 import src.main._private.sql;
 import src.main.group.database.DatabaseConnector;
 import src.main.group.database.QueryResult;
+import src.main.group.handlers.PasswordMD5;
 
 import javax.swing.*;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class Control {
@@ -38,9 +40,9 @@ public class Control {
 
     }
 
-    public void anmelden(String pBenutzer, String pPasswort) {
+    public void anmelden(String pBenutzer, String pPasswort) throws NoSuchAlgorithmException {
         //ID fuer den Benutzer ermitteln.
-        connector.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pBenutzer + "' AND Passwort = '" + pPasswort + "'");
+        connector.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pBenutzer + "' AND Passwort = '" + PasswordMD5.create(pPasswort) + "'");
         QueryResult result = connector.getCurrentQueryResult();
 
         //Ueberpruefen, ob Anmeldung erfolgreich war.
