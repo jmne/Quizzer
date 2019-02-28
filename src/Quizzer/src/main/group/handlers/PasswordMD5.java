@@ -12,11 +12,6 @@ import java.security.NoSuchAlgorithmException;
 
 public class PasswordMD5 {
 
-    public static void main(String[] args) {
-        create("jan");
-    }
-
-
     public static String create(@NotNull String password) {
 
         try {
