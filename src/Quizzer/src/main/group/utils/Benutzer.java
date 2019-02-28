@@ -1,7 +1,14 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package src.main.group.utils;
 
 import src.main.group.database.DatabaseConnector;
 import src.main.group.database.QueryResult;
+import src.main.group.handlers.PasswordMD5;
+
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Dies ist die Verwaltung der Benutzer für das Quizspiel von Gruppe 2.
@@ -12,12 +19,27 @@ import src.main.group.database.QueryResult;
 public class Benutzer {
 
     private String username, email, passwort, benutzerID;
+    private boolean angemeldet;
 
     /**
      * Konstruktor der Klasse Benutzer.
      */
     public Benutzer() {
 
+        /**
+         * Vielleicht ändern!!
+         */
+
+        angemeldet = false;
+
+    }
+
+    public boolean isAngemeldet() {
+        return angemeldet;
+    }
+
+    public void setAngemeldet(boolean angemeldet) {
+        this.angemeldet = angemeldet;
     }
 
     /**
@@ -104,7 +126,7 @@ public class Benutzer {
      * @return Gibt true zurÜck, wenn der Benutzer erfolgreich angemeldet wurde und false, wenn er nicht angemeldet
      * werden konnte.
      */
-    public boolean loginBenutzer(String pUsername, String pPasswort, DatabaseConnector pConnect) {
+    public boolean loginBenutzer(String pUsername, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
         pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
         QueryResult result = pConnect.getCurrentQueryResult();
         if (result.getRowCount() == 1) {
@@ -113,7 +135,7 @@ public class Benutzer {
             result = pConnect.getCurrentQueryResult();
             email = result.getData()[0][0];
             username = pUsername;
-            passwort = pPasswort;
+            passwort = PasswordMD5.create(pPasswort);
             return true;
         } else {
             pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
@@ -124,7 +146,7 @@ public class Benutzer {
                 result = pConnect.getCurrentQueryResult();
                 username = result.getData()[0][0];
                 email = pUsername;
-                passwort = pPasswort;
+                passwort = PasswordMD5.create(pPasswort);
                 return true;
             }
         }
@@ -145,7 +167,7 @@ public class Benutzer {
      * @return Gibt true zurÜck, wenn der Benutzer erfolgreich erstellt wurde und false, wenn er nicht erstellt
      * werden konnte.
      */
-    public boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect) {
+    public boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
         pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('" + pUsername + "', '" + pEmail + "', '" + pPasswort + "')");
         if (pConnect.getErrorMessage() == null) {
             pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
@@ -153,7 +175,7 @@ public class Benutzer {
             benutzerID = result.getData()[0][0];
             username = pUsername;
             email = pEmail;
-            passwort = pPasswort;
+            passwort = PasswordMD5.create(pPasswort);
             return true;
         }
 
