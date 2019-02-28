@@ -25,3 +25,11 @@ Falls ihr noch Fragen habt schaut in unser [Wiki][wiki].
     * Class structure/first features
     * SQl Connection
     * Project Site [Here](https://github.com/jancodet/Quizzer/projects/1)
+
+* 0.2.0
+    * GUI Start
+
+* 0.2.1
+    * New GUI Library
+    * New Interface
+    * Settings Menu
