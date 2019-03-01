@@ -31,11 +31,15 @@ public class Benutzer {
          */
 
         angemeldet = false;
-
     }
 
     public boolean isAngemeldet() {
         return angemeldet;
+    }
+
+    public void abmelden()
+    {
+        angemeldet = false;
     }
 
     /**
