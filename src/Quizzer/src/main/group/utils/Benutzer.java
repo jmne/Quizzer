@@ -38,10 +38,6 @@ public class Benutzer {
         return angemeldet;
     }
 
-    public void setAngemeldet(boolean angemeldet) {
-        this.angemeldet = angemeldet;
-    }
-
     /**
      * Getter für den String username.
      *
@@ -51,6 +47,7 @@ public class Benutzer {
         {
             return username;
         }
+        else return null;
     }
 
     /**
@@ -72,6 +69,7 @@ public class Benutzer {
         {
             return email;
         }
+        else return null;
     }
 
     /**
@@ -93,6 +91,7 @@ public class Benutzer {
         {
             return passwort;
         }
+        else return null;
     }
 
     /**
@@ -114,6 +113,7 @@ public class Benutzer {
         {
             return benutzerID;
         }
+        else return null;
     }
 
     /**
@@ -180,14 +180,15 @@ public class Benutzer {
      * werden konnte.
      */
     public boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
-        pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('" + pUsername + "', '" + pEmail + "', '" + pPasswort + "')");
+        passwort = PasswordMD5.create(pPasswort);
+        pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('" + pUsername + "', '" + pEmail + "', '" + passwort + "')");
         if (pConnect.getErrorMessage() == null) {
-            pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+            pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + passwort + "'");
             QueryResult result = pConnect.getCurrentQueryResult();
             benutzerID = result.getData()[0][0];
             username = pUsername;
             email = pEmail;
-            passwort = PasswordMD5.create(pPasswort);
+            angemeldet = true;
             return true;
         }
 
