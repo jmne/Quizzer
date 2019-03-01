@@ -59,8 +59,13 @@ public class Benutzer {
      *
      * @param String temp auf den im Verlauf der Methode der String username gesetzt wird.
      */
-    public void setUsername(String temp) {
-        username = temp;
+    public boolean setUsername(String neuUsername,DatabaseConnector pConnect) {
+        pConnect.executeStatement("UPDATE benutzer SET username='" + neuUsername + "' WHERE BenutzerID = '" + benutzerID + "'");
+        if (pConnect.getErrorMessage() == null) {
+            username = neuUsername;
+            return true;
+        }
+        else return false;
     }
 
     /**
