@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
  * Dies ist die Verwaltung der Benutzer für das Quizspiel von Gruppe 2.
  *
  * @author Kevin Baier
- * @version 1.1
+ * @version 1.3
  */
 public class Benutzer {
 
@@ -127,26 +127,25 @@ public class Benutzer {
      * werden konnte.
      */
     public boolean loginBenutzer(String pUsername, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
-        pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+        passwort = PasswordMD5.create(pPasswort);
+        pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + passwort + "'");
         QueryResult result = pConnect.getCurrentQueryResult();
         if (result.getRowCount() == 1) {
             benutzerID = result.getData()[0][0];
-            pConnect.executeStatement("SELECT Email FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+            pConnect.executeStatement("SELECT Email FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + passwort + "'");
             result = pConnect.getCurrentQueryResult();
             email = result.getData()[0][0];
             username = pUsername;
-            passwort = PasswordMD5.create(pPasswort);
             return true;
         } else {
-            pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+            pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + passwort + "'");
             result = pConnect.getCurrentQueryResult();
             if (result.getRowCount() == 1) {
                 benutzerID = result.getData()[0][0];
-                pConnect.executeStatement("SELECT Username FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + pPasswort + "'");
+                pConnect.executeStatement("SELECT Username FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + passwort + "'");
                 result = pConnect.getCurrentQueryResult();
                 username = result.getData()[0][0];
                 email = pUsername;
-                passwort = PasswordMD5.create(pPasswort);
                 return true;
             }
         }
