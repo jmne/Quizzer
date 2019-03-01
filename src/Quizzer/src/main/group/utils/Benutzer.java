@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
  * Dies ist die Verwaltung der Benutzer für das Quizspiel von Gruppe 2.
  *
  * @author Kevin Baier
- * @version 1.3
+ * @version 1.4
  */
 public class Benutzer {
 
@@ -48,7 +48,9 @@ public class Benutzer {
      * @return String username.
      */
     public String getUsername() {
-        return username;
+        {
+            return username;
+        }
     }
 
     /**
@@ -66,7 +68,10 @@ public class Benutzer {
      * @return String email.
      */
     public String getEmail() {
-        return email;
+        if(angemeldet)
+        {
+            return email;
+        }
     }
 
     /**
@@ -84,7 +89,10 @@ public class Benutzer {
      * @return String passwort.
      */
     public String getPasswort() {
-        return passwort;
+        if(angemeldet)
+        {
+            return passwort;
+        }
     }
 
     /**
@@ -102,7 +110,10 @@ public class Benutzer {
      * @return String benutzerID.
      */
     public String getBenutzerID() {
-        return benutzerID;
+        if(angemeldet)
+        {
+            return benutzerID;
+        }
     }
 
     /**
@@ -136,6 +147,7 @@ public class Benutzer {
             result = pConnect.getCurrentQueryResult();
             email = result.getData()[0][0];
             username = pUsername;
+            angemeldet = true;
             return true;
         } else {
             pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Email='" + pUsername + "' AND Passwort = '" + passwort + "'");
@@ -146,6 +158,7 @@ public class Benutzer {
                 result = pConnect.getCurrentQueryResult();
                 username = result.getData()[0][0];
                 email = pUsername;
+                angemeldet = true;
                 return true;
             }
         }
