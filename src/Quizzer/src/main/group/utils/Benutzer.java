@@ -14,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
  * Dies ist die Verwaltung der Benutzer für das Quizspiel von Gruppe 2.
  *
  * @author Kevin Baier
- * @version 1.4
+ * @version 2.0
  */
 public class Benutzer {
 
@@ -81,8 +81,20 @@ public class Benutzer {
      *
      * @param String temp auf den im Verlauf der Methode der String email gesetzt wird.
      */
-    public void setEmail(String temp) {
-        email = temp;
+    public boolean setEmail(String neuEmail, String pPasswort, DatabaseConnector pConnect) {
+        if(passwort == PasswordMD5.create(pPasswort))
+        {
+            pConnect.executeStatement("UPDATE benutzer SET email='" + neuEmail + "' WHERE BenutzerID = '" + benutzerID + "'");
+            if (pConnect.getErrorMessage() == null) {
+                email = neuEmail;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else return false;
     }
 
     /**
@@ -103,8 +115,22 @@ public class Benutzer {
      *
      * @param String temp auf den im Verlauf der Methode der String passwort gesetzt wird.
      */
-    public void setPasswort(String temp) {
-        passwort = temp;
+    public boolean setPasswort(String neuPasswort, String altPasswort, DatabaseConnector pConnect) {
+        String temp = PasswordMD5.create(altPasswort);
+        if(passwort == temp)
+        {
+            passwort = PasswordMD5.create(neuPasswort);
+            pConnect.executeStatement("UPDATE benutzer SET passwort='" + passwort + "' WHERE BenutzerID = '" + benutzerID + "'");
+            if (pConnect.getErrorMessage() == null) {
+                return true;
+            }
+            else
+            {
+                passwort = temp;
+                return false;
+            }
+        }
+        else return false;
     }
 
     /**
