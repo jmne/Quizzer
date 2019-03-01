@@ -19,6 +19,7 @@ public class Gui extends JFrame {
     /**
      * Create the frame.
      */
+
     public Gui() {
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
