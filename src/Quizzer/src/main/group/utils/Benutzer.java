@@ -33,11 +33,11 @@ public class Benutzer {
         angemeldet = false;
     }
 
-    public boolean isAngemeldet() {
+    private boolean isAngemeldet() {
         return angemeldet;
     }
 
-    public void abmelden()
+    private void abmelden()
     {
         angemeldet = false;
     }
@@ -47,7 +47,7 @@ public class Benutzer {
      *
      * @return String username.
      */
-    public String getUsername() {
+    private String getUsername() {
         {
             return username;
         }
@@ -59,7 +59,7 @@ public class Benutzer {
      *
      * @param String temp auf den im Verlauf der Methode der String username gesetzt wird.
      */
-    public boolean setUsername(String neuUsername,DatabaseConnector pConnect) {
+    private boolean setUsername(String neuUsername,DatabaseConnector pConnect) {
         pConnect.executeStatement("UPDATE benutzer SET username='" + neuUsername + "' WHERE BenutzerID = '" + benutzerID + "'");
         if (pConnect.getErrorMessage() == null) {
             username = neuUsername;
@@ -73,7 +73,7 @@ public class Benutzer {
      *
      * @return String email.
      */
-    public String getEmail() {
+    private String getEmail() {
         if(angemeldet)
         {
             return email;
@@ -86,7 +86,7 @@ public class Benutzer {
      *
      * @param String temp auf den im Verlauf der Methode der String email gesetzt wird.
      */
-    public boolean setEmail(String neuEmail, String pPasswort, DatabaseConnector pConnect) {
+    private boolean setEmail(String neuEmail, String pPasswort, DatabaseConnector pConnect) {
         if(passwort == PasswordMD5.create(pPasswort))
         {
             pConnect.executeStatement("UPDATE benutzer SET email='" + neuEmail + "' WHERE BenutzerID = '" + benutzerID + "'");
@@ -107,7 +107,7 @@ public class Benutzer {
      *
      * @return String passwort.
      */
-    public String getPasswort() {
+    private String getPasswort() {
         if(angemeldet)
         {
             return passwort;
@@ -118,9 +118,9 @@ public class Benutzer {
     /**
      * Setter für den String passwort.
      *
-     * @param String temp auf den im Verlauf der Methode der String passwort gesetzt wird.
+     * @param String neuPasswort auf den im Verlauf der Methode der String passwort gesetzt wird.
      */
-    public boolean setPasswort(String neuPasswort, String altPasswort, DatabaseConnector pConnect) {
+    private boolean setPasswort(String neuPasswort, String altPasswort, DatabaseConnector pConnect) {
         String temp = PasswordMD5.create(altPasswort);
         if(passwort == temp)
         {
@@ -143,21 +143,12 @@ public class Benutzer {
      *
      * @return String benutzerID.
      */
-    public String getBenutzerID() {
+    private String getBenutzerID() {
         if(angemeldet)
         {
             return benutzerID;
         }
         else return null;
-    }
-
-    /**
-     * Setter für den String benutzerID.
-     *
-     * @param String temp auf den im Verlauf der Methode der String benutzerID gesetzt wird.
-     */
-    public void setBenutzerID(String temp) {
-        benutzerID = temp;
     }
 
     /**
@@ -172,7 +163,7 @@ public class Benutzer {
      * @return Gibt true zurÜck, wenn der Benutzer erfolgreich angemeldet wurde und false, wenn er nicht angemeldet
      * werden konnte.
      */
-    public boolean loginBenutzer(String pUsername, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
+    private boolean loginBenutzer(String pUsername, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
         passwort = PasswordMD5.create(pPasswort);
         pConnect.executeStatement("SELECT BenutzerID FROM benutzer WHERE Username='" + pUsername + "' AND Passwort = '" + passwort + "'");
         QueryResult result = pConnect.getCurrentQueryResult();
@@ -214,7 +205,7 @@ public class Benutzer {
      * @return Gibt true zurÜck, wenn der Benutzer erfolgreich erstellt wurde und false, wenn er nicht erstellt
      * werden konnte.
      */
-    public boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
+    private boolean createBenutzer(String pUsername, String pEmail, String pPasswort, DatabaseConnector pConnect) throws NoSuchAlgorithmException {
         passwort = PasswordMD5.create(pPasswort);
         pConnect.executeStatement("INSERT INTO benutzer (Username, Email, Passwort) VALUES ('" + pUsername + "', '" + pEmail + "', '" + passwort + "')");
         if (pConnect.getErrorMessage() == null) {
