@@ -95,6 +95,62 @@ class Question
 		return frageID;
 	}
 	
+	public boolean submit(String pBenutzerID, int pFrageID, boolean richtig, DatabaseConnector pConnect)
+	{
+		pConnect.executeStatement("SELECT Bearbeitet, Richtig FROM fragen WHERE FrageID='" + pFrageID + "'");
+        QueryResult result = pConnect.getCurrentQueryResult();
+		int pBearbeitet = result.getData()[0][0] + 1;
+		int pRichtig = result.getData()[0][1] + 1;
+		if(richtig)
+		{
+			pConnect.executeStatement("UPDATE fragen SET Bearbeitet='" + pBearbeitet + "', Richtig='" + pRichtig + "' WHERE FrageID = '" + pFrageID + "'")
+		}
+		else
+		{
+			pConnect.executeStatement("UPDATE fragen SET Bearbeitet='" + pBearbeitet + "' WHERE FrageID = '" + pFrageID + "'")
+		}
+	
+		if(pConnect.getErrorMessage() != null)
+		{
+			return false;
+		}
+		
+		pConnect.executeStatement("SELECT processed, correct FROM fStats WHERE FrageID='" + pFrageID + "' AND BenutzerID='" + pBenutzerID + "'");
+        QueryResult result = pConnect.getCurrentQueryResult();
+		if(result.getData()[0][0] != null)
+		{
+			int pProcessed = result.getData()[0][0];
+			int pCorrect = result.getData()[0][1];
+			if(richtig)
+			{
+				pConnect.executeStatement("UPDATE fStats SET processed='" + pProcessed + "', correct='" + pCorrect + "' WHERE FrageID='" + pFrageID + "' AND BenutzerID='" + pBenutzerID + "'")
+			}
+			else
+			{
+				pConnect.executeStatement("UPDATE fStats SET processed='" + pProcessed + "' WHERE FrageID='" + pFrageID + "' AND BenutzerID='" + pBenutzerID + "'")
+			}
+	
+		}
+		else
+		{
+			if(richtig)
+			{
+				pConnect,executeStatement("INSERT INTO fStats(BenutzerID, FrageID, processed, correct) VALUES ('" + pBenutzerID + "', '" + pFrageID + "', '1', '1')")
+			}
+			else
+			{
+				pConnect,executeStatement("INSERT INTO fStats(BenutzerID, FrageID, processed, correct) VALUES ('" + pBenutzerID + "', '" + pFrageID + "', '1', '0')")
+			}
+		}
+		
+		if(pConnect.getErrorMessage() != null)
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
     //Setter
 
     String getId() 
