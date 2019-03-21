@@ -1,0 +1,26 @@
+package src.main.group.utils;
+
+import src.main.group.database.DatabaseConnector;
+import src.main.group.database.QueryResult;
+
+public class Statistik()
+{
+	String[] stats;
+	
+	public Statistik()
+	{
+		stats = new String[2];
+	}
+	
+	public String[] getStats(String pBenutzerID, DatabaseConnector pConnect)
+	{
+		pConnect.executeStatement("SELECT BFragen, RFragen FROM statistiken WHERE BenutzerID='" + pBenutzerID + "'");
+		if(pConnect.getErrorMessage() == null)
+		{
+			stats[0] = result.getData[0][0]; //Bearbeitete Fragen
+			stats[1] = result.getData[0][1]; //Richtige Fragen
+		}
+		
+		return stats;
+	}
+}
