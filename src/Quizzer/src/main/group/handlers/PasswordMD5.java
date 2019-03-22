@@ -4,15 +4,13 @@
 
 package src.main.group.handlers;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class PasswordMD5 {
 
-    public static String create(@NotNull String password) {
+    public static String create(String password) {
 
         try {
 

@@ -1,7 +1,11 @@
+/*
+ * Copyright (c) 2019 | Jan M. (@jncdt)
+ */
+
 package src.main.group.handlers;
 
 public enum GameState {
-    MENU, SETTINGS, INGAME, END, STATISTIC;
+    LOGIN, MENU, SETTINGS, INGAME, END, STATISTIC;
 
     private static GameState state;
 
