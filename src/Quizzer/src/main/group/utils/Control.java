@@ -96,11 +96,12 @@ public class Control {
     public ArrayList<String> getQuestionByID(int ID) {
 
         connector.executeStatement("SELECT FrageID, Frage, kategorie.Name Kategorie, A1, A2, A3, A4, KorrekteAntwort, Bearbeitet, Richtig " +
-                "FROM fragen f LEFT OUTER JOIN kategorie ON f.Kategorie = kategorie.KategorieID WHERE f.FrageID=" + ID);
+                "FROM fragen f LEFT OUTER JOIN kategorie ON f.Kategorie = kategorie.Zahl WHERE f.FrageID=" + ID);
 
         QueryResult result = connector.getCurrentQueryResult();
 
         ArrayList<String> ql = new ArrayList<>();
+
 
         if (result.getData()[0][0] != null &&
                 result.getData()[0][1] != null &&
