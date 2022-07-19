@@ -11,9 +11,7 @@ Download and execute ツ
 
 ## Benutzung
 
-Meldet euch an und spielt unser Quiz! Beantwortet möglichst viel richtig sonst gibts Haue..
-
-Falls ihr noch Fragen habt schaut in unser [Wiki][wiki].
+Meldet euch an und spielt unser Quiz! Beantwortet möglichst viel richtig :)
 
 
 ## Releases
@@ -24,7 +22,7 @@ Falls ihr noch Fragen habt schaut in unser [Wiki][wiki].
 * 0.1.0
     * Class structure/first features
     * SQl Connection
-    * Project Site [Here](https://github.com/jancodet/Quizzer/projects/1)
+    * Project Site [Here](https://github.com/jmne/Quizzer/projects/1)
 
 * 0.2.0
     * GUI Start
